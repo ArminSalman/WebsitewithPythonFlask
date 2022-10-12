@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+    <div class="container">
+        <p class="alert alert-primary">Bütün alanları doldurunuz</p>
+        <p class="alert alert-primary">Eğer birden fazla adınız varsa isim bölümünde onları da yazınız.</p>
+        <br>
+        <h3>Kayıt</h3>
+        <br>
+        <form method=post>
+            {{ render_field(form.name,class="form-control") }}
+            {{ render_field(form.familyname,class="form-control") }}
+            {{ render_field(form.username,class="form-control") }}
+            {{ render_field(form.email,class="form-control") }}
+            {{ render_field(form.password,class="form-control") }}
+            {{ render_field(form.confirm,class="form-control") }}
+            <br>
+            <button type="submit" class="btn btn-success">Kayıt Ol</button>
+        </form>
+    </div>
+
+{% endblock body %}

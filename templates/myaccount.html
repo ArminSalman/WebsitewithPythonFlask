@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <h3 style="margin-left: 10px;">Bilgileriniz</h3>
+        <p style="float: right; font-size: 25px; margin-right: 40px; margin-top: -42px;"><i>{{note}} Puan</i></p>
+        <br>
+        <table class="table table-hover">
+                <tr>
+                    <th scope="col">İsim</th>
+                    <td>{{session["name"]}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                  </tr>
+                <tr>
+                    <th scope="col">Soyisim</th>
+                    <td>{{session["familyname"]}}</td>
+                    <td></td>
+                </tr>    
+                <tr>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <td>{{session["username"]}}</td>
+                    <td><a href="/change-username">Değiştir</a></td>
+                </tr>
+                <tr>
+                    <th scope="col">Email</th>
+                    <td>{{session["email"]}}</td>
+                    <td><a href="/change-email">Değiştir</a></td>
+                </tr>
+                <tr>
+                    <th scope="col">Parola</th>
+                    <td><b style="font-size: 20px;">************</b></td>
+                    <td><a href="/change-password">Değiştir</a></td>
+                </tr>
+                {% if session["teacher"] == 1 %}
+                    {% if session["teacherVerify"] == 1 %}
+                    <tr>
+                        <th scope="col">School</th>
+                        <td>{{session["school"]}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Branş</th>
+                        <td>{{session["branch"]}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Plaka Kodu</th>
+                        <td>{{session["cityCode"]}}</td>
+                        <td></td>
+                    </tr>
+                    
+                    {% else %}
+                    <tr>
+                        <th scope="col">Plaka Kodu</th>
+                        <td>{{session["cityCode"]}}</td>
+                        <td></td>
+                    </tr>
+                    {% endif %}
+                {% endif %}
+              
+          </table>
+    </div>
+    
+{% endblock body %}

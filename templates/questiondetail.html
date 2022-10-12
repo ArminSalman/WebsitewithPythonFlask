@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<fieldset>
+    <div class="content">
+        <h3>{{question[1]}}</h3>
+        <a href="/complaint-question"><img src="../static/img/complainticon.png" style="width: 100px; float: right;"></a>
+        {% if question[6] %}
+            <br>
+            <div class="hovereffect" style="width: 500px;">
+                <img src="../static/img/{{question[6]}}" style="width: 500px;" class="img-responsive">
+                <div class="overlay">
+                    <p>
+                        <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+        <br><br><br><br><br><br><br><br><br>
+        <p>{{question[2] | safe}}</p>
+    </div>
+
+    <div class="info">
+        <p>Kullanıcı Adı: {{question[3]}}</p>
+        <p>Ders: {{question[4]}}</p>
+        <p>Tarih: {{question[5]}}</p>
+    </div>
+</fieldset>
+<br><br>
+
+{% include "includes/comment.html" %}
+
+{% endblock body %}

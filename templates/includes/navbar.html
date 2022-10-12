@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top: -20px;">
+  <a class="navbar-brand" href="/">Öğretmenim</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/questions">Sorular<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/ranking">Sıralama<span class="sr-only"></span></a>
+      </li>
+    </ul>
+
+    {% if session["logined"] %}
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown nav-item active" style="margin-right: 20px;">
+          <a class="nav-link dropdown" href="/#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img style="width: 22px;" src="../static/img/settingsicon.png" alt="">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/my-account">Hesabım</a>
+            <a class="dropdown-item" href="/my-questions">Sorularım</a>
+            {% if session["teacher"] %}
+              {% if session["teacherVerify"] %}
+              {% else %}
+              <a class="dropdown-item" href="/verify-teacher">Öğretmenlik Doğrulama</a>
+              {% endif %}
+            {% endif %}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Çıkış Yap</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown nav-item active"><a href="/add-question" class="btn btn-danger">Soru Ekle</a></li>
+      </ul>
+    {% else %}
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">Giriş Yap <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/register">Kayıt Ol <span class="sr-only"></span></a>
+        </li>
+      </ul>
+    {% endif %}
+    
+  </div>
+</nav>

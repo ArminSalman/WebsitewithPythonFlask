@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<div class="container">
+    <form method="POST">
+        {{ render_field(form.fusername,class="form-control") }}
+        {{ render_field(form.lusername,class="form-control") }}
+        {{ render_field(form.password,class="form-control") }}
+        <br>
+        <button type="submit" class="btn btn-success">Değiştir</button>
+    </form>
+</div>
+
+{% endblock body %}

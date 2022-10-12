@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if datas and datas != [1,2] %}
+    <div class="container">
+        <div>
+            <form>
+                {% include "includes/search.html"%}
+                <br>
+                <select name="lessonfilter" id="lessonfilter" class="form-control" style="width: auto;">
+                    <option value="All">Tümü</option>
+                    <option value="Matematik">Matematik</option>
+                    <option value="Fizik">Fizik</option>
+                    <option value="Kimya">Kimya</option>
+                    <option value="Biyoloji">Biyoloji</option>
+                    <option value="Türkçe">Türkçe</option>
+                    <option value="Türk Dili ve Edebiyatı">Türk Dili ve Edebiyatı</option>
+                    <option value="Tarih">Tarih</option>
+                    <option value="Coğrafya">Coğrafya</option>
+                    <option value="Almanca">Almanca</option>
+                    <option value="İngilizce">İngilizce</option>
+                </select>
+                <button class="btn btn-primary" style="margin-top: -6%; margin-left: 220px;">Ara</button>
+            </form>
+            <table class="table table-hover" style="position: relative; top:50px;">
+                <thead>
+                    <tr>
+                        <th scope="col">Kullanıcı Adı</th>
+                        <th scope="col">Başlık</th>
+                        <th scope="col">Ders</th>
+                        <th scope="col">Tarih</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in datas %}
+                        <tr>
+                            <td>{{data[3]}}</td>
+                            <td><a href="/view-question/{{data[0]}}">{{data[1]}}</a></td>
+                            <td>{{data[4]}}</td>
+                            <td>{{data[5]}}</td>
+                            <td><a href="/view-question/{{data[0]}}" class="btn btn-primary">Görüntüle</a></td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% elif datas == [1,2]%}
+    <div class="alert alert-warning">Aradığınız başlığa uygun bir soru bulamadık</div>
+{% else %}
+    <div class="alert alert-warning">Henüz eklenmiş bir soru bulunmamaktadır</div>
+{% endif %}
+    
+
+{% endblock body %}

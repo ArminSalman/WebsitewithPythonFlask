@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <form method="GET">
+        <select name="rankSelect" style="width: 250px;" class="form-control">
+            {% if rankSelect == "Normal" %}
+                <p>Normal</p>
+                <option value="Normal">Normal Üye Sıralama</option>
+                <option value="Teacher">Öğretmen Üye Sıralama</option>
+            {% elif rankSelect == "Teacher" %}
+                <p>Öğretmen</p>
+                <option value="Teacher">Öğretmen Üye Sıralama</option>
+                <option value="Normal">Normal Üye Sıralama</option>
+            {% else %}
+                <option value="Normal">Normal Üye Sıralama</option>
+                <option value="Teacher">Öğretmen Üye Sıralama</option>
+            {% endif %}
+            
+        </select>
+        <button class="btn btn-dark" style="margin-top: -6%; margin-left: 300px;">Sırala</button>
+    </form>
+
+
+{% if users %}
+    <table class="table table-hover" style="position: relative; top:50px;">
+        <thead>
+            <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Kullanıcı Adı</th>
+                {% if rankSelect == "Teacher" %}
+                    <th scope="col">Branş</th>
+                {% endif %}
+                <th scope="col">Puan</th>
+                <!-- <th scope="col"></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>
+                        {% for i in range(0,lenUsers)  %}
+                            {% if users[i] == user %}
+                                {{i+1}}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if users[0] == user %}
+                            <p style="color: red;">{{user[0]}}</p>
+                        {% elif users[1] == user %}
+                            <p style="color: green;">{{user[0]}}</p>
+                        {% elif users[2] == user %}
+                            <p style="color: blue;">{{user[0]}}</p>
+                        {% endif %}
+                    </td>
+                    {% if rankSelect == "Teacher" %}
+                        <td>{{user[2]}}</td>
+                    {% endif %}
+                    <td>{{user[4]}}</td>
+                </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+</div>
+{% endblock body %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <form method = "POST">
+            <select name="school" id="school" class="form-control">
+                {% for school in schools %}
+                    <option value="{{school}}">{{school}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <button class="btn btn-success">Doğrula</button>
+        </form>
+    </div>
+{% endblock body %}

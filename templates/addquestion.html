@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {{ render_field(form.title,class="form-control") }}
+        <br>
+        <b>Ders</b><br><br>
+        <select name="lesson" class="form-control" style="width: auto;">
+            <option value="Matematik">Matematik</option>
+            <option value="Türkçe">Türkçe</option>
+            <option value="Türk Dili ve Edebiyatı">Türk Dili ve Edebiyatı</option>
+            <option value="Fizik">Fizik</option>
+            <option value="Biyoloji">Biyoloji</option>
+            <option value="Kimya">Kimya</option>
+            <option value="Tarih">Tarih</option>
+            <option value="Coğrafya">Coğrafya</option>
+            <option value="İngilizce">İngilizce</option>
+            <option value="Almanca">Almanca</option>
+        </select>
+        <br><br>
+        {{ render_field(form.content,class="form-control") }}
+        <br>
+        <p><b>Sorunun Fotoğrafı(İsteğe Bağlı)</b></p>
+        <input type=file name=file>
+        <br><br>
+        <button type="submit" class="btn btn-success">Ekle</button>
+    </form>
+</div>
+
+{% endblock body %}

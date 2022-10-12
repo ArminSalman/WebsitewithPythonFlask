@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+    {% if datas %}
+        <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Başlık</th>
+                    <th scope="col">Ders</th>
+                    <th scope="col">Tarih</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in datas  %}
+                    <tr>
+                        <td><a href="/view-question/{{data[0]}}">{{data[1]}}</a></td>
+                        <td>{{data[2]}}</td>
+                        <td>{{data[3]}}</td>
+                        <td><a href="/view-question/{{data[0]}}" class="btn btn-info">Görüntüle</a></td>
+                        <td><a href="/update-question/{{data[0]}}" class="btn btn-primary">Güncelle</a></td>
+                        <td><a href="/delete-question/{{data[0]}}" class="btn btn-danger">Sil</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">Hiç Sorunuz Bulunmuyor</div>
+    {% endif %}
+
+
+{% endblock body %}

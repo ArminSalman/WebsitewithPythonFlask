@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <form method = "POST">
+        <h2>Yorum Düzenle</h2>
+        <br>
+        <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+            <b style="font-size: 20px;">Yorum</b>
+            <br>
+            <br>
+            <textarea class="form-control" id="message" name = "comment" placeholder="Cevap..." required="" >{{comment}}</textarea>
+            <br>
+            <button class="btn btn-success" style="float: right;">Güncelle</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}
